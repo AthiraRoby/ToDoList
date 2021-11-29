@@ -80,7 +80,8 @@ function handleChange(e)
                 if(checkedCount==5){alert('Congrats. 5 Tasks have been Successfully Completed');checkedCount=0;}
             }
     else    {
-                checkedCount--;
+                 if(checkedCount>0)
+                    {checkedCount--;}
                 console.log('unchecked');
             }
 }
