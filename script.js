@@ -55,7 +55,7 @@ function ajax(){
                 newhtml+=`<tr><td><input type="checkbox" class="donechkbx" value=true Checked disabled></td>`;}
                else
                {
-                newhtml+=`<tr><td><input type="checkbox" class="donechkbx" value=false > </td>`;}
+                newhtml+=`<tr><td><input type="checkbox" class="donechkbx" value=false onchange="handleChange(event)"> </td>`;}
 
                newhtml+=`<td>${response[i].title}</td></tr>`;
 
@@ -69,37 +69,18 @@ function ajax(){
 
 }
 
-// var checkedCount=0;
+var checkedCount=0;
+function handleChange(e) 
+{
+    const {checked} = e.target;
 
-
-// $('.todolist').on('change','.donechkbx',function(e){
-//     if($(this).prop('checked')===true){
-//         console.log('checked');
-//         checkedCount++; 
-//         $(this).parent().addClass('active');
-//     }
-//     else{
-//         checkedCount--;
-//         console.log('unchecked');
-//         $(this).parent().removeClass('active');
-//     }
-    
-//    // promiseCall();
-
-
-// });
-// $(document).ready(function() {
-//     console.log(cnt);
-//     $('.donechkbx').on('change', function () {
-
-//         let textElement = $(this).val()
-//         let strength = 0
-      
-//         cnt++;
-//         console.log(cnt);
-//         console.log(textElement);
-
-
-
-//     })
-// });
+    if(checked==true){
+                console.log('checked');
+                checkedCount++; 
+                if(checkedCount==5){alert('Congrats. 5 Tasks have been Successfully Completed');checkedCount=0;}
+            }
+    else    {
+                checkedCount--;
+                console.log('unchecked');
+            }
+}
